@@ -10,4 +10,8 @@
 
 @interface CheckListsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property(nonatomic,retain) IBOutlet UITableView *tableView;
+
+- (IBAction)addItem;
+
 @end

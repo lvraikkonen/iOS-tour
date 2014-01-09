@@ -104,4 +104,31 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
 }
 
+//add one fake item
+- (IBAction)addItem
+{
+    NSInteger newRowIndex = [_items count];
+    
+    CheckListItem *item=[[CheckListItem alloc]init];
+    item.text=@"new row";
+    item.checked=NO;
+    [_items addObject:item];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    NSArray *indexPaths = @[indexPath];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+//commit edit --tableView delegate
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_items removeObjectAtIndex:indexPath.row];
+    ////way 1 to reload data --disappear with bad user experience
+    //[self.tableView reloadData];
+    
+    //way 2
+    NSArray *indexPaths = @[indexPath];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 @end
