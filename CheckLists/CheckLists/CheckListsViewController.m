@@ -42,9 +42,22 @@
     }
     
     cell.textLabel.text= @"Sample Row";
-    cell.accessoryType= UITableViewCellAccessoryCheckmark;
+    cell.accessoryType= UITableViewCellAccessoryNone;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //get the cell selected
+    UITableViewCell *selectedCell=[tableView cellForRowAtIndexPath:indexPath];
+    if (selectedCell.accessoryType == UITableViewCellAccessoryNone) {
+        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        selectedCell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
