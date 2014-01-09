@@ -21,6 +21,7 @@
 		3FDCA6AC187ED3730098542B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDCA68E187ED3730098542B /* UIKit.framework */; };
 		3FDCA6B4187ED3730098542B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FDCA6B2187ED3730098542B /* InfoPlist.strings */; };
 		3FDCA6B6187ED3730098542B /* CheckListsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCA6B5187ED3730098542B /* CheckListsTests.m */; };
+		3FDCA6C1187EDB310098542B /* CheckListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDCA6C0187EDB310098542B /* CheckListItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		3FDCA6B1187ED3730098542B /* CheckListsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CheckListsTests-Info.plist"; sourceTree = "<group>"; };
 		3FDCA6B3187ED3730098542B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3FDCA6B5187ED3730098542B /* CheckListsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckListsTests.m; sourceTree = "<group>"; };
+		3FDCA6BF187EDB310098542B /* CheckListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListItem.h; sourceTree = "<group>"; };
+		3FDCA6C0187EDB310098542B /* CheckListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				3FDCA6A0187ED3730098542B /* CheckListsViewController.m */,
 				3FDCA6A2187ED3730098542B /* Images.xcassets */,
 				3FDCA691187ED3730098542B /* Supporting Files */,
+				3FDCA6BF187EDB310098542B /* CheckListItem.h */,
+				3FDCA6C0187EDB310098542B /* CheckListItem.m */,
 			);
 			path = CheckLists;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				3FDCA6A1187ED3730098542B /* CheckListsViewController.m in Sources */,
 				3FDCA697187ED3730098542B /* main.m in Sources */,
 				3FDCA69B187ED3730098542B /* CheckListsAppDelegate.m in Sources */,
+				3FDCA6C1187EDB310098542B /* CheckListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
