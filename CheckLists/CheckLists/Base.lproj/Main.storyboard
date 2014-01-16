@@ -31,7 +31,7 @@
                     <navigationItem key="navigationItem" title="Check Lists" id="6vO-e2-ZTn">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Cn-1u-c4Q">
                             <connections>
-                                <segue destination="7l3-pG-Tz5" kind="modal" id="i3f-ku-mdC"/>
+                                <segue destination="7l3-pG-Tz5" kind="modal" identifier="AddItem" id="i3f-ku-mdC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -90,7 +90,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="clg-Qb-iXF">
                             <connections>
-                                <action selector="done" destination="fZZ-8b-nJO" id="IBA-aN-Z83"/>
+                                <action selector="done" destination="fZZ-8b-nJO" id="5x8-IU-3Fq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddItemViewController.h"
 
-@interface CheckListsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CheckListsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,AddItemViewControllerDelegate>
 
 @property(nonatomic,retain) IBOutlet UITableView *tableView;
 
-- (IBAction)addItem;
+//- (IBAction)addItem;
 
 @end

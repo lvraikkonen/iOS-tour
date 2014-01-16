@@ -7,6 +7,7 @@
 //
 
 #import "AddItemViewController.h"
+#import "CheckListItem.h"
 
 @interface AddItemViewController ()
 
@@ -23,7 +24,12 @@
 {
     NSLog(@"Text input is %@",self.textInput.text);
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    CheckListItem *item=[[CheckListItem alloc]init];
+    item.text=self.textInput.text;
+    item.checked=NO;
+    
+    //let the delegate object implemention do this action--step 3
+    [self.delegate addItemViewController:self didFinishAddingItem:item];
 }
 
 - (void)viewWillAppear:(BOOL)animated

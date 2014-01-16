@@ -104,6 +104,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
 }
 
+/*
 //add one fake item
 - (IBAction)addItem
 {
@@ -118,6 +119,7 @@
     NSArray *indexPaths = @[indexPath];
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+ */
 
 //commit edit --tableView delegate
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -129,6 +131,38 @@
     //way 2
     NSArray *indexPaths = @[indexPath];
     [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+//addItemViewController delegate method
+- (void)addItemViewController:(AddItemViewController *)controller didFinishAddingItem:(CheckListItem *)item
+{
+    NSInteger newRow=[_items count];
+    [_items addObject:item];
+    
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:newRow inSection:0];
+    NSArray *indexPaths=@[indexPath];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addItemViewControllerDidCancel:(AddItemViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddItem"]) {
+        //1
+        UINavigationController *navigationController=segue.destinationViewController;
+        
+        //2
+        AddItemViewController *addItemController=(AddItemViewController *)navigationController.topViewController;
+        
+        //assign delegate controller for addItemController
+        addItemController.delegate=self;
+    }
 }
 
 @end
