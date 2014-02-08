@@ -1,18 +1,15 @@
 //
-//  CheckListsViewController.h
-//  CheckLists
+//  ChecklistsViewController.h
+//  Checklists
 //
-//  Created by Claus on 14-1-9.
+//  Created by Claus on 14-2-1.
 //  Copyright (c) 2014年 self.edu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "AddItemViewController.h"
+//add delegate class
+#import "ItemDetailViewController.h"
 
-@interface CheckListsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,AddItemViewControllerDelegate>
-
-@property(nonatomic,retain) IBOutlet UITableView *tableView;
-
-//- (IBAction)addItem;
+@interface ChecklistsViewController : UITableViewController<ItemDetailViewControllerDelegate>
 
 @end

@@ -1,14 +1,14 @@
 //
-//  CheckListsAppDelegate.m
-//  CheckLists
+//  ChecklistsAppDelegate.m
+//  Checklists
 //
-//  Created by Claus on 14-1-9.
+//  Created by Claus on 14-2-1.
 //  Copyright (c) 2014年 self.edu. All rights reserved.
 //
 
-#import "CheckListsAppDelegate.h"
+#import "ChecklistsAppDelegate.h"
 
-@implementation CheckListsAppDelegate
+@implementation ChecklistsAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

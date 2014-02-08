@@ -1,14 +1,14 @@
 //
-//  CheckListsAppDelegate.h
-//  CheckLists
+//  ChecklistsAppDelegate.h
+//  Checklists
 //
-//  Created by Claus on 14-1-9.
+//  Created by Claus on 14-2-1.
 //  Copyright (c) 2014年 self.edu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface CheckListsAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ChecklistsAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -1,18 +1,18 @@
 //
-//  CheckListsTests.m
-//  CheckListsTests
+//  ChecklistsTests.m
+//  ChecklistsTests
 //
-//  Created by Claus on 14-1-9.
+//  Created by Claus on 14-2-1.
 //  Copyright (c) 2014年 self.edu. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface CheckListsTests : XCTestCase
+@interface ChecklistsTests : XCTestCase
 
 @end
 
-@implementation CheckListsTests
+@implementation ChecklistsTests
 
 - (void)setUp
 {

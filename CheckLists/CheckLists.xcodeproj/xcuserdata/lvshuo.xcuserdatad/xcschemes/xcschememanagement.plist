@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CheckLists.xcscheme</key>
+		<key>Checklists.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3FDCA686187ED3730098542B</key>
+		<key>3F1E4163189CE50A00DCA805</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3FDCA6A7187ED3730098542B</key>
+		<key>3F1E4184189CE50A00DCA805</key>
 		<dict>
 			<key>primary</key>
 			<true/>
