@@ -6,50 +6,65 @@
 //  Copyright (c) 2013 Razeware LLC. All rights reserved.
 //
 
-#import "ChecklistsViewController.h"
+#import "ChecklistViewController.h"
 #import "ChecklistItem.h"
+#import "Checklist.h"
 
-@interface ChecklistsViewController ()
+@interface ChecklistViewController ()
 
 @end
 
-@implementation ChecklistsViewController
+@implementation ChecklistViewController
 {
   NSMutableArray *_items;
+}
+
+- (NSString *)documentsDirectory
+{
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths firstObject];
+  return documentsDirectory;
+}
+
+- (NSString *)dataFilePath
+{
+  return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklists.plist"];
+}
+
+- (void)saveChecklistItems
+{
+  NSMutableData *data = [[NSMutableData alloc] init];
+  NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+  [archiver encodeObject:_items forKey:@"ChecklistItems"];
+  [archiver finishEncoding];
+  [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+- (void)loadChecklistItems
+{
+  NSString *path = [self dataFilePath];
+  if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    _items = [unarchiver decodeObjectForKey:@"ChecklistItems"];
+    [unarchiver finishDecoding];
+  } else {
+    _items = [[NSMutableArray alloc] initWithCapacity:20];
+  }
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+  if ((self = [super initWithCoder:aDecoder])) {
+    [self loadChecklistItems];
+  }
+  return self;
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-
-  _items = [[NSMutableArray alloc] initWithCapacity:20];
-
-  ChecklistItem *item;
-
-  item = [[ChecklistItem alloc] init];
-  item.text = @"Walk the dog";
-  item.checked = NO;
-  [_items addObject:item];
-
-  item = [[ChecklistItem alloc] init];
-  item.text = @"Brush my teeth";
-  item.checked = YES;
-  [_items addObject:item];
-
-  item = [[ChecklistItem alloc] init];
-  item.text = @"Learn iOS development";
-  item.checked = YES;
-  [_items addObject:item];
-
-  item = [[ChecklistItem alloc] init];
-  item.text = @"Soccer practice";
-  item.checked = NO;
-  [_items addObject:item];
-
-  item = [[ChecklistItem alloc] init];
-  item.text = @"Eat ice cream";
-  item.checked = YES;
-  [_items addObject:item];
+  self.title = self.checklist.name;
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,13 +115,17 @@
   [item toggleChecked];
 
   [self configureCheckmarkForCell:cell withChecklistItem:item];
-	
+
+  [self saveChecklistItems];
+
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [_items removeObjectAtIndex:indexPath.row];
+
+  [self saveChecklistItems];
 
   NSArray *indexPaths = @[indexPath];
   [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -126,6 +145,8 @@
   NSArray *indexPaths = @[indexPath];
   [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 
+  [self saveChecklistItems];
+	
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -135,6 +156,8 @@
   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
   UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
   [self configureTextForCell:cell withChecklistItem:item];
+
+  [self saveChecklistItems];
 
   [self dismissViewControllerAnimated:YES completion:nil];
 }
