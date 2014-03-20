@@ -20,6 +20,8 @@
 		3FDBA50C18DAF92E004E0AE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDBA4EE18DAF92E004E0AE4 /* UIKit.framework */; };
 		3FDBA51418DAF92E004E0AE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FDBA51218DAF92E004E0AE4 /* InfoPlist.strings */; };
 		3FDBA51618DAF92E004E0AE4 /* CheckListsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBA51518DAF92E004E0AE4 /* CheckListsTests.m */; };
+		3FDBA52118DAF997004E0AE4 /* CheckListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBA52018DAF997004E0AE4 /* CheckListsViewController.m */; };
+		3FDBA52418DAF9AC004E0AE4 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDBA52318DAF9AC004E0AE4 /* ChecklistItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		3FDBA51118DAF92E004E0AE4 /* CheckListsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CheckListsTests-Info.plist"; sourceTree = "<group>"; };
 		3FDBA51318DAF92E004E0AE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3FDBA51518DAF92E004E0AE4 /* CheckListsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckListsTests.m; sourceTree = "<group>"; };
+		3FDBA51F18DAF997004E0AE4 /* CheckListsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListsViewController.h; sourceTree = "<group>"; };
+		3FDBA52018DAF997004E0AE4 /* CheckListsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListsViewController.m; sourceTree = "<group>"; };
+		3FDBA52218DAF9AC004E0AE4 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecklistItem.h; sourceTree = "<group>"; };
+		3FDBA52318DAF9AC004E0AE4 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecklistItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,10 @@
 				3FDBA4FC18DAF92E004E0AE4 /* Main.storyboard */,
 				3FDBA50218DAF92E004E0AE4 /* Images.xcassets */,
 				3FDBA4F118DAF92E004E0AE4 /* Supporting Files */,
+				3FDBA51F18DAF997004E0AE4 /* CheckListsViewController.h */,
+				3FDBA52018DAF997004E0AE4 /* CheckListsViewController.m */,
+				3FDBA52218DAF9AC004E0AE4 /* ChecklistItem.h */,
+				3FDBA52318DAF9AC004E0AE4 /* ChecklistItem.m */,
 			);
 			path = CheckLists;
 			sourceTree = "<group>";
@@ -245,8 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FDBA52118DAF997004E0AE4 /* CheckListsViewController.m in Sources */,
 				3FDBA4F718DAF92E004E0AE4 /* main.m in Sources */,
 				3FDBA4FB18DAF92E004E0AE4 /* CheckListsAppDelegate.m in Sources */,
+				3FDBA52418DAF9AC004E0AE4 /* ChecklistItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
