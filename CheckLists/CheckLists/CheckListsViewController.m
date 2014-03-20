@@ -123,4 +123,57 @@
     [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+#pragma mark - Prepare for sugue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddItem"]) {
+        //add item
+        UINavigationController *navigationController = segue.destinationViewController;
+        ItemDetailViewController *detailViewController = (ItemDetailViewController *)navigationController.topViewController;
+        detailViewController.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"EditItem"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        ItemDetailViewController *detailViewController = (ItemDetailViewController *)navigationController.topViewController;
+        detailViewController.delegate=self;
+        //send object to detail view **********************???????????sender
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        ChecklistItem *item = [_items objectAtIndex:indexPath.row];
+        detailViewController.itemToEdit=item;
+    }
+}
+
+#pragma mark - ItemDetailView delegate methods
+- (void)itemDetailViewControllerDidCancel:(ItemDetailViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)itemDetailViewController:(ItemDetailViewController *)controller didFinishAddingItem:(ChecklistItem *)item
+{
+    NSInteger index = [_items count];
+    [_items addObject:item];
+    //get the indexPath
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    NSArray *indexPaths = @[indexPath];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)itemDetailViewController:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item
+{
+    //get the cell
+    NSInteger index = [_items indexOfObject:item];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    //reconfigure textlabel in view
+    [self configTextlabelForCell:cell withChecklistItem:item];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
