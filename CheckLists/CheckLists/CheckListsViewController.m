@@ -17,26 +17,23 @@
     NSMutableArray *_items;
 }
 
-//sanbox document directory
-- (NSString *)documentDirectory
+- (NSString *)documentsDirectory
 {
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [path firstObject];
-    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths firstObject];
     return documentsDirectory;
 }
 
 - (NSString *)dataFilePath
 {
-    return [[self documentDirectory]stringByAppendingString:@"/Checklists.plist"];
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"Checklists.plist"];
 }
 
-//serilize data into plist
-- (void)saveChecklistsItems
+- (void)saveChecklistItems
 {
     NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
-    [archiver encodeObject:_items forKey:@"ChecklistsItems"];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:_items forKey:@"ChecklistItems"];
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
 }
@@ -71,7 +68,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"Document folder is %@",[self documentDirectory]);
+    NSLog(@"Document folder is %@",[self documentsDirectory]);
     NSLog(@"Data File path is %@",[self dataFilePath]);
     
     /*
@@ -161,7 +158,7 @@
     [item toggleChecked];
     
     //save
-    [self saveChecklistsItems];
+    [self saveChecklistItems];
     
     //get the cell
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -177,7 +174,7 @@
     [_items removeObject:[_items objectAtIndex:indexPath.row]];
     
     //save
-    [self saveChecklistsItems];
+    [self saveChecklistItems];
     
     //remove item from view
     NSArray *indexPaths = @[indexPath];
@@ -217,7 +214,7 @@
     [_items addObject:item];
     
     //save
-    [self saveChecklistsItems];
+    [self saveChecklistItems];
     
     //get the indexPath
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
@@ -236,7 +233,7 @@
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
     //save
-    [self saveChecklistsItems];
+    [self saveChecklistItems];
     
     //reconfigure textlabel in view
     [self configTextlabelForCell:cell withChecklistItem:item];
